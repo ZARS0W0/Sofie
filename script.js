@@ -16,6 +16,7 @@ function startBackgroundMusic() {
     if (!ytPlayer || !ytPlayer.unMute || musicStarted) return;
     musicStarted = true;
     try {
+        ytPlayer.seekTo(17, true);
         ytPlayer.unMute();
         ytPlayer.setVolume(parseInt(document.getElementById("volume-slider").value, 10));
         ytPlayer.playVideo();
@@ -41,6 +42,7 @@ function initYouTubePlayer() {
         events: {
             onReady: function (event) {
                 const vol = parseInt(document.getElementById("volume-slider").value, 10);
+                event.target.seekTo(17, true);
                 event.target.setVolume(vol);
                 event.target.unMute();
                 event.target.playVideo();
